@@ -51,7 +51,7 @@ class CProductInfo extends React.Component{
     }
 
     addPrToInvoice=()=>{
-        let stockQuantity = this.props.stockData.filter(d=> d.productSerial == this.state.product.productSerial)[0].productQuantity
+        let stockQuantity = this.props.stockData.filter(d=> d.productSerial === this.state.product.productSerial)[0].productQuantity
         this.setState({productsOnInvoice: stockQuantity <this.state.product.productQuantity?[]:
              this.state.productsOnInvoice.concat(this.state.product),click: true , 
             product: this.state.resetState

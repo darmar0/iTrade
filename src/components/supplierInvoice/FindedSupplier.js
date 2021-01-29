@@ -3,7 +3,6 @@ import React from "react"
 
 const FindedSupplier = ({data}) =>{
     const info = data.companyName === undefined? data.supplier: data
-    console.log(info.companyName)
     return(
       
         <div className="col-5 offset-1">

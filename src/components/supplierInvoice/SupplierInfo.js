@@ -42,7 +42,7 @@ addSupplier=()=>{
     this.setState({click: !this.state.click})
 }
 setClick=()=>{
-    const filteredSupplier = this.props.supplierData.filter(sup=>sup.supplier.companyName.toLowerCase() == this.state.supplierName.toLowerCase())
+    const filteredSupplier = this.props.supplierData.filter(sup=>sup.supplier.companyName.toLowerCase() === this.state.supplierName.toLowerCase())
     const supplier = filteredSupplier.length === 0 ? this.state.newSupplier :filteredSupplier[0]
       this.setState({ newSupplier: supplier, status: filteredSupplier.length === 0 ?false: true })
 

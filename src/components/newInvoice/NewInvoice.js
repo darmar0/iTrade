@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 
 const NewInvoice=({customerData,insertNewCustomer,stockData,deleteProduct,newInvoiceInfo,insertNewInvoiceNum})=>{
-   const invoiceNum = "i"+"-"+new Date().getFullYear()+(new Date().getMonth()+1)+0+Math.floor(Math.random() * 100);
+   const invoiceNum = "i-"+new Date().getFullYear()+(new Date().getMonth()+1)+0+Math.floor(Math.random() * 100);
    let history = useHistory();
     return(
         <div className="container">

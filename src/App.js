@@ -46,7 +46,6 @@ class App extends React.Component{
             if(filterStock.length >0){
                 let quantity =   parseInt(filterStock[0].productQuantity) + parseInt(newProduct.productQuantity)
                 filterStock[0].productQuantity = quantity  }
-                console.log(index )
             this.setState({
                 data: filterStock.length >0? { 
                     ...this.state.data, 
@@ -60,7 +59,6 @@ class App extends React.Component{
         insertNewSupplier=(newSupplier)=>{
             newSupplier.id = Math.floor(Math.random() * 100);
             this.setState({
-                saved: true,
                 data:{ 
                   ...this.state.data,
                   supplierData: this.state.data.supplierData.concat(newSupplier) 
@@ -77,9 +75,19 @@ class App extends React.Component{
             }})
         }
         insertNewInvoiceNum=(customer,invNum)=>{
-            let xxx = [...this.state.data.customerData]
-            let filterCustomer = xxx.filter(i=>i.companyTaxNumber === customer.companyTaxNumber)
-            let final = customer.companyTaxNumber ===""? null :filterCustomer[0].invoices.push(invNum)
+          console.log(customer)
+          let clone =  [...this.state.data.customerData]
+          let cust = customer.companyTaxNumber === ""? null : 
+          this.state.data.customerData.filter(i=>i.companyTaxNumber === customer.companyTaxNumber)[0]
+          let newInvoices = customer.companyTaxNumber === ""? null : cust.invoices.concat(invNum)
+          if(customer.companyTaxNumber !== ""){cust.invoices = newInvoices
+          let index = clone.indexOf(this.state.data.customerData.filter(i=>i.companyTaxNumber === customer.companyTaxNumber)[0])
+          clone.splice(index,1)}
+          this.setState({  
+            data: { 
+            ...this.state.data,
+            customerData: clone.concat(customer.companyTaxNumber !== ""?cust: null)
+          }})
         }
     
    newInvoiceInfo=(newData)=>{
@@ -90,7 +98,7 @@ class App extends React.Component{
     let quantity = filterStock.map(p=>
     ({id: p.id, productName:p.productName,productPrice: p.productPrice,productSerial: p.productSerial, productQuantity: 
    newData.products.filter(x=>x.productSerial.includes(p.productSerial)).map(x=>p.productQuantity - x.productQuantity)[0]}))
-   let finalStock = stockClone.filter((v,i)=>index.indexOf(i) == -1).concat(quantity.map(d=>d))
+   let finalStock = stockClone.filter((v,i)=>index.indexOf(i) === -1).concat(quantity.map(d=>d))
   
             this.setState({  
               data: { 
@@ -101,7 +109,6 @@ class App extends React.Component{
           }
 
         render(){
-  
          const { error, isLoaded, data } = this.state;
          if (error) {
            return <div>Error: {error.message}</div>;

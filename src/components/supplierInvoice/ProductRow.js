@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import SupInvoicePreview from "./SupInvoicePreview.js"
 
 const ProductRow =({setValues,addProducttoInvoice,takeProduct,newProduct,status,realQuantState,productsOnInvoice,resiveValues})=>{
-    const onStock = status === false? 0 : realQuantState.length > 0? realQuantState[0].productQuantity: null;
+    const onStock = status === undefined? 0 : realQuantState.length > 0? realQuantState[0].productQuantity: null;
     const [id, setValueIId] = useState()
     const [val, setValueVal] = useState()
 

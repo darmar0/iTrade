@@ -12,7 +12,7 @@ state={
     },
    productsOnInvoice: {storageDate:"",supInvoiceNum:"",supplier:[],products:[]},
    serial:"",
-   status:false,
+   status:undefined,
    realQuantState:"",
    click: false,
    resetState : {
@@ -26,10 +26,8 @@ state={
    /*Creates new product*/
 setValues=(e)=>{
     let inputId = e.target.id
-    console.log(e.target.id)
     let newProductClone = {...this.state.newProduct}
     newProductClone[inputId] = e.target.value
-    console.log(newProductClone)
     this.setState({newProduct:newProductClone,serial:newProductClone.productSerial})
 }
 /*Finds existing product*/

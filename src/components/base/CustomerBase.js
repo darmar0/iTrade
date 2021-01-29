@@ -26,13 +26,10 @@ class CustomerBase extends React.Component{
 click=()=>{
     this.setState({click:true})
 }
-showInvoice=(e)=>{
-   
-}
 
 clickForDetails=(e)=>{
     let btnId = e.target.id
-    let customer = this.state.customerData.filter(item=> item.id == btnId)
+    let customer = this.state.customerData.filter(item=> item.id === parseInt(btnId))
     this.setState({details: customer,clickDetails: true})
 }
 
@@ -53,7 +50,6 @@ saveCustomer=(e)=>{
 }
 
     render(){
-
     const CustomerList = this.state.customerData.map(data=>{
         return( 
         <Customer data={data} clickForDetails={this.clickForDetails} key={data.id}/>
@@ -70,7 +66,7 @@ saveCustomer=(e)=>{
         </div>
         </div>
         {this.state.clickDetails === true? <CustomerDetails companyData={this.props.companyData}
-        showInvoice={this.showInvoice} details={this.state.details} invoiceData={this.props.invoiceData}/> :
+        details={this.state.details} invoiceData={this.props.invoiceData}/> :
         <div className="row">
         <div className="col-12 offset-0 mt-4">
         <table className="table table-bordered">

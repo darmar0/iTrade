@@ -11,14 +11,13 @@ const Dashboard=({invoiceData,supplierData})=>{
     const currYear  = new Date().getFullYear()
     const day = new Date().getDate() <= 9? "0" + new Date().getDate():  new Date().getDate()
     const curDate = day +"."+ curMonth+"."+ currYear
-    const minute = new Date().getMinutes()
     
     /*SALES*/
-    const salesCalc = invoiceData.filter(data => data.invoiceDate == curDate)
+    const salesCalc = invoiceData.filter(data => data.invoiceDate === curDate)
     const todaySales = Number(salesCalc.map(tr=> tr.calculation.total).reduce((a, b) => a + b, 0)).toFixed(2)
-    const saleCalcM = invoiceData.filter(data=>data.invoiceDate.split("")[3] + data.invoiceDate.split("")[4] == curMonth)
+    const saleCalcM = invoiceData.filter(data=> data.invoiceDate.split("")[3] + data.invoiceDate.split("")[4] === curMonth)
     const monthSale = saleCalcM.length !==0? Number(saleCalcM.map(tr=> tr.calculation.total).reduce((a, b) => a + b, 0)).toFixed(2): 0.00
-    const saleCalcY = invoiceData.filter(data=>data.invoiceDate.split("").slice(6).join("") == currYear)
+    const saleCalcY = invoiceData.filter(data=> parseInt(data.invoiceDate.split("").slice(6).join("")) === currYear)
     const yearSale = saleCalcY !== 0? Number(saleCalcY.map(tr=> tr.calculation.total).reduce((a, b) => a + b, 0)).toFixed(2): 0.00
 
     /*BAY*/
@@ -28,30 +27,30 @@ const Dashboard=({invoiceData,supplierData})=>{
     const bayCalcM = supplierData.filter(data => data.storageDate.split("")[3]+data.storageDate.split("")[4] == curMonth)
     const bayCalcM1 = bayCalcM.length !== 0? bayCalc.map(tr=> tr.products.map(pr=> parseInt(pr.productPrice*pr.productQuantity)).reduce((a, b) => a + b, 0)): 0.00
     const monthBay =  bayCalcM1 !==0?Number(bayCalcM1.reduce((a, b) => a + b, 0)).toFixed(2):0.00
-    */const bayCalcY = supplierData.filter(data => data.storageDate.split("").slice(6).join("") == currYear)
+    const bayCalcY = supplierData.filter(data => parseInt(data.storageDate.split("").slice(6).join("")) === currYear)
     const bayCalcY1 = bayCalcY.length !== 0? bayCalcY.map(tr=> tr.products.map(pr=> parseInt(pr.productPrice*pr.productQuantity)).reduce((a, b) => a + b, 0)): 0.00
-    const yearBay =  bayCalcY1!==0?Number(bayCalcY1.reduce((a, b) => a + b, 0)).toFixed(2):0.00
+    const yearBay =  bayCalcY1!==0?Number(bayCalcY1.reduce((a, b) => a + b, 0)).toFixed(2):0.00*/
    
 
   /*MONTH SALES*/
     const dataSales = invoiceData.map(data => [data.invoiceDate].concat(data.calculation.total))
     const dataObjMonth = dataSales.map(d=>({
-      date:d[0].split("")[3] + d[0].split("")[4] == curMonth? d[0].split("")[0] + d[0].split("")[1] +"/"+ curMonth:null, sales:d[0].split("")[3] + d[0].split("")[4] == curMonth? d[1]: 0}))
+      date: d[0].split("")[3] + d[0].split("")[4] === String(curMonth)? d[0].split("")[0] + d[0].split("")[1] +"/"+ curMonth:null, sales: d[0].split("")[3] + d[0].split("")[4] === String(curMonth)? d[1]: 0}))
     const dataObjY = dataSales.map(d=>({
-      date:d[0].split("").slice(6).join("") == currYear? d[0].split("")[0] + d[0].split("")[1] +"/"+ curMonth:null, sales:d[0].split("").slice(6).join("") == currYear? d[1]: 0}))
+      date: parseInt(d[0].split("").slice(6).join("")) === currYear? d[0].split("")[0] + d[0].split("")[1] +"/"+ curMonth:null, sales:parseInt(d[0].split("").slice(6).join("")) === currYear? d[1]: 0}))
   /*YEAR SUPPLAY*/
   const dataSupplyDate = supplierData.map(d=>[d.storageDate].concat(d.products.map(p=>parseInt(p.productPrice*p.productQuantity)).reduce((a, b) => a + b, 0)))
   const dataObjYearSup = dataSupplyDate.map(d=>({
-    date:d[0].split("").slice(6).join("") == currYear? d[0] : null, sales:d[0].split("").slice(6).join("") == currYear? d[1]: null
+    date:parseInt(d[0].split("").slice(6).join("")) === currYear? d[0] : null, sales:parseInt(d[0].split("").slice(6).join("")) === currYear? d[1]: null
   }))
 
- 
+
    const outputMsales = [];
 
    dataObjMonth.forEach(function(item) {
   var existing = outputMsales.filter(function(v, i) {
  
-    return v.date == item.date;
+    return v.date === item.date;
   });
   if (existing.length) {
     var existingIndex = outputMsales.indexOf(existing[0]);
@@ -74,7 +73,7 @@ const outputTradeFinal = [];
 outputTrade.forEach(function(item) {
   var existing = outputTradeFinal.filter(function(v, i) {
  
-    return v.date == item.date;
+    return v.date === item.date;
   });
   if (existing.length) {
     var existingIndex = outputTradeFinal.indexOf(existing[0]);

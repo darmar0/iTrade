@@ -18,7 +18,7 @@ const InvoicePreview=({invoiceData,deletePrToInvoice,setValuesInfo})=>{
                     <td className="col-3 serial">
                     <span className="input-group">
                <span  className="input-group-text" >Type :</span>
-               <select id="taxes" onChange={setValuesInfo}class="form-control">
+               <select id="taxes" onChange={setValuesInfo}className="form-control">
                    <option >invoice</option>
                    <option >Proforma</option>
                 </select>
@@ -35,7 +35,7 @@ const InvoicePreview=({invoiceData,deletePrToInvoice,setValuesInfo})=>{
                     <td className="col-3">
                     <span className="input-group">
                <span  className="input-group-text" >Tax rate %</span>
-               <select id="taxes" onChange={setValuesInfo}class="form-control">
+               <select id="taxes" onChange={setValuesInfo}className="form-control">
                    <option >0</option>
                    <option >20</option>
                    <option >18</option>
