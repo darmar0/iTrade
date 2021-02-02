@@ -22,11 +22,10 @@ Project is created with:
 
 ## Usage
 
-<br/>
-<br/>
-
 * #### Supplier invoice
 In this section, we are importing, buying products from our supplier.
+<br/>
+<br/>
 <br/>
 ![supplier-invoice](https://user-images.githubusercontent.com/69918077/106674857-4d47c580-65b4-11eb-9849-ae5d71f6f423.jpg)
 <br/>
@@ -39,6 +38,8 @@ In this section, we are importing, buying products from our supplier.
 
 * ### Invoice
 In this section, we are selling products from stock.
+<br/>
+<br/>
 <br/>
 ![invoice](https://user-images.githubusercontent.com/69918077/106674831-428d3080-65b4-11eb-9e0b-702edc5082e7.jpg)
 <br/>
