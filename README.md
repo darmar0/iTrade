@@ -2,7 +2,7 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Usage](#Usage)
-* [Inspiration](#Inspiration)
+
 
 ## General info
 Invoicing, stock and client base suite with data visualisation for small business (no backend). 
@@ -35,7 +35,7 @@ In this section, we are importing, buying products from our supplier.
 4. At the bottom, the app needs know number of supplier invoice for archiving purpose.
 5. By clicking save, a new product is already stored in the stock section of the iTrade app.
 
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 * ### Invoice
 In this section, we are selling products from stock.
 <br/>
@@ -48,6 +48,7 @@ In this section, we are selling products from stock.
 3. By clickink "add" buttton you are putting product on invoice,which can have multiple items.
 4. The app needs to know  tax rate and the discount amount for the final calculation.
 5. By clicking save, a newly created invoice is stored in the Client base section under the appropriate customer card.
+
 
  
 
