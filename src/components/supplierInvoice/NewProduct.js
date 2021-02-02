@@ -12,7 +12,7 @@ state={
     },
    productsOnInvoice: {storageDate:"",supInvoiceNum:"",supplier:[],products:[]},
    serial:"",
-   status:undefined,
+   status:"",
    realQuantState:"",
    click: false,
    resetState : {
@@ -35,7 +35,8 @@ takeProduct=()=>{
     let filteredStock = this.props.stockData.filter(products=> products.productSerial === this.state.serial )
     let notFound = "No matching serial number in stock"
      let product = filteredStock.length === 0? this.state.newProduct : filteredStock[0]
-     this.setState({newProduct: product,status: this.state.newProduct.productName === ""? notFound: null,
+     product.id = Math.floor(Math.random() * 100)
+     this.setState({newProduct: product,status: this.state.newProduct.productName.length !== 0? "" :notFound,
      realQuantState: filteredStock.length > 0 ?this.props.stockData.filter(products=> products.productSerial === this.state.newProduct.productSerial):false})
  }
 
@@ -70,12 +71,18 @@ save=()=>{
     this.props.history.push("/stock")
 }
 
-/*
-deleteNewPr=()=>{
-    this.setState({rows:this.state.rows.splice(1,1) })
-}*/
+
+deleteFromToInvoice=(id)=>{
+    let productsOnInvoiceClone = this.state.productsOnInvoice.products
+    let invoiceClone = this.state.productsOnInvoice
+    let newState = productsOnInvoiceClone.filter(d=> d.id !== id)
+    invoiceClone.products = newState
+    this.setState({  productsOnInvoice: invoiceClone})
+    
+}
+
+
     render(){
-   
         return(
             <>
             <div className="row">
@@ -86,28 +93,30 @@ deleteNewPr=()=>{
        
     <div className="row">
     <div className="col-12">
-        <table className="table table-bordered">
+        <table className="table table-bordered resFont">
             <thead className="thead-dark">
                 <tr className="d-flex">
                     <th className="col ordinal"></th>
-                    <th className="col-3 serial">Product serial</th>
+                    <th className="col-3">Product serial</th>
                     <th className="col-3">Product name</th>
                     <th className="col-2">Quantity</th>
                     <th className="col-2">Unit price</th>
-                    <th className="col-2">Add in stock</th>
+                    <th className="col-2 action">Add in stock</th>
                 </tr>
             </thead>
            
             <ProductRow setValues={this.setValues} saveProduct={this.saveProduct} takeProduct={this.takeProduct}
             newProduct={this.state.newProduct} status={this.state.status} realQuantState={this.state.realQuantState} 
-            productsOnInvoice={this.state.productsOnInvoice.products} addProducttoInvoice={this.addProducttoInvoice} resiveValues={this.resiveValues}/>
+            productsOnInvoice={this.state.productsOnInvoice.products} addProducttoInvoice={this.addProducttoInvoice} resiveValues={this.resiveValues}
+            deleteFromToInvoice={this.deleteFromToInvoice}/>
     
         </table>
     </div>
     </div>
     <div className="row">
         <div className="col-4 mt-4">
-            <button className="btn btn-secondary form-control" onClick={this.save}>Save</button>
+            <button className="btn btn-secondary form-control resFont" onClick={this.save} 
+            disabled={this.props.supplier === undefined || this.props.supplier.companyName === ""} >Save</button>
         </div>
     </div>
 </>

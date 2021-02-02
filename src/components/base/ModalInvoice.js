@@ -18,7 +18,7 @@ const ModalInvoice =({data,companyData,details,modalIsOpen,setModalIsOpen})=>{
     return(
 
 <Modal className="modalInv" isOpen={modalIsOpen} onRequestClose={()=> setModalIsOpen(false)}>
-  <div className="container-fluid border">
+  <div className="container-fluid border modalRes">
     <div className="row mt-4 mb-3">
         <div className="col-4">
             <h4>{companyData.companyName}</h4>

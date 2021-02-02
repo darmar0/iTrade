@@ -13,6 +13,7 @@ class  StockTable extends React.Component{
     }
     
 render(){ 
+
    const allproducts = this.state.stock.map(data=>{
        const supplier = this.props.supplierData.filter(x=>x.products.some(i=>i.productSerial === data.productSerial))
 
@@ -31,15 +32,15 @@ render(){
     </div></div>
                     <div className="row">
                         <div className="col-12">
-                        <table className="table table-bordered">
+                        <table className="table table-bordered resFont">
             <thead className="thead-dark">
                 <tr className="d-flex">
                 <th className="col-3"> 
                     <div className="input-group">
-                    <input  type="text" className="form-control " 
+                    <input  type="text" className="form-control resFont" 
                     onChange={this.filterProductBase} placeholder="Product name"  ></input>
                      <span className="input-group-append">
-        <button className="btn btn-secondary input-group-append" >Find</button></span></div>
+        <button className="btn btn-secondary input-group-append resFont" >Find</button></span></div>
                    </th>
                     <th className="col-2">Product serial</th>
                     <th className="col-1">Avalible</th>

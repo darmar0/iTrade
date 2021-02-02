@@ -20,7 +20,7 @@ class App extends React.Component{
 
 
         componentDidMount() {
-            fetch("https://gist.githubusercontent.com/darmar0/d42992a1e2f93aee1adbf656126c3a1f/raw/5baa9fc0df407fb221a57c41dc7a8ad0e441efe1/db.json")
+            fetch("https://gist.githubusercontent.com/darmar0/d42992a1e2f93aee1adbf656126c3a1f/raw/e394b61d0f8d98b5cb0aa02c7e133ee83a9e9207/db.json")
               .then(res => res.json())
               .then(
                 (data) => {
@@ -39,7 +39,7 @@ class App extends React.Component{
           }
 
           insertnewProduct=(newProduct)=>{
-       
+   
             let stockClone = [...this.state.data.stockData]
             let filterStock = stockClone.filter(product=> product.productSerial === newProduct.productSerial)
             let index = stockClone.indexOf(filterStock[0])
@@ -75,7 +75,7 @@ class App extends React.Component{
             }})
         }
         insertNewInvoiceNum=(customer,invNum)=>{
-          console.log(customer)
+
           let clone =  [...this.state.data.customerData]
           let cust = customer.companyTaxNumber === ""? null : 
           this.state.data.customerData.filter(i=>i.companyTaxNumber === customer.companyTaxNumber)[0]

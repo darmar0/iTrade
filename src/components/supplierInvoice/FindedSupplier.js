@@ -7,11 +7,11 @@ const FindedSupplier = ({data}) =>{
       
         <div className="col-5 offset-1">
         <div className="card">
-                       <div className="card-header">
+                       <div className="card-header resFont">
                            <h4>{info.companyName}</h4>
                         
                        </div>
-                       <div className="card-body">
+                       <div className="card-body resFont">
                            <h6>Adress:</h6> {info.companyAdress}, {info.companyCity}, {info.companyCountry}
                            <h6>Contact:</h6> {info.companyPhoneNumber}, {info.companyEmail}
                            

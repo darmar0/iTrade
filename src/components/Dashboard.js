@@ -20,37 +20,25 @@ const Dashboard=({invoiceData,supplierData})=>{
     const saleCalcY = invoiceData.filter(data=> parseInt(data.invoiceDate.split("").slice(6).join("")) === currYear)
     const yearSale = saleCalcY !== 0? Number(saleCalcY.map(tr=> tr.calculation.total).reduce((a, b) => a + b, 0)).toFixed(2): 0.00
 
-    /*BAY*/
-    /*const bayCalc = supplierData.filter(data => data.storageDate == curDate)
-    const bayCalc2 = bayCalc.length !== 0? bayCalc.map(tr=> tr.products.map(pr=> parseInt(pr.productPrice*pr.productQuantity)).reduce((a, b) => a + b, 0)): 0.00
-    const todayBay = bayCalc2.length !== 0? Number(bayCalc2.reduce((a, b) => a + b, 0)).toFixed(2):0
-    const bayCalcM = supplierData.filter(data => data.storageDate.split("")[3]+data.storageDate.split("")[4] == curMonth)
-    const bayCalcM1 = bayCalcM.length !== 0? bayCalc.map(tr=> tr.products.map(pr=> parseInt(pr.productPrice*pr.productQuantity)).reduce((a, b) => a + b, 0)): 0.00
-    const monthBay =  bayCalcM1 !==0?Number(bayCalcM1.reduce((a, b) => a + b, 0)).toFixed(2):0.00
-    const bayCalcY = supplierData.filter(data => parseInt(data.storageDate.split("").slice(6).join("")) === currYear)
-    const bayCalcY1 = bayCalcY.length !== 0? bayCalcY.map(tr=> tr.products.map(pr=> parseInt(pr.productPrice*pr.productQuantity)).reduce((a, b) => a + b, 0)): 0.00
-    const yearBay =  bayCalcY1!==0?Number(bayCalcY1.reduce((a, b) => a + b, 0)).toFixed(2):0.00*/
-   
 
   /*MONTH SALES*/
     const dataSales = invoiceData.map(data => [data.invoiceDate].concat(data.calculation.total))
-    const dataObjMonth = dataSales.map(d=>({
-      date: d[0].split("")[3] + d[0].split("")[4] === String(curMonth)? d[0].split("")[0] + d[0].split("")[1] +"/"+ curMonth:null, sales: d[0].split("")[3] + d[0].split("")[4] === String(curMonth)? d[1]: 0}))
+    const dataObjMonth = dataSales.map(d=>({ date: d[0].split("")[3] + d[0].split("")[4] === String(curMonth)? d[0].split("")[0] + d[0].split("")[1] +"/"+ curMonth:null, 
+    sales: d[0].split("")[3] + d[0].split("")[4] === String(curMonth)? d[1]: 0})).filter(d=>d.date !== null)
     const dataObjY = dataSales.map(d=>({
-      date: parseInt(d[0].split("").slice(6).join("")) === currYear? d[0].split("")[0] + d[0].split("")[1] +"/"+ curMonth:null, sales:parseInt(d[0].split("").slice(6).join("")) === currYear? d[1]: 0}))
-  /*YEAR SUPPLAY*/
+      date: parseInt(d[0].split("").slice(6).join("")) === currYear?d[0].split("")[0] + d[0].split("")[1] +"/"+ d[0].split("")[3] + d[0].split("")[4] :null, sales:parseInt(d[0].split("").slice(6).join("")) === currYear? d[1]: 0}))
+  
+      /*YEAR SUPPLAY*/
   const dataSupplyDate = supplierData.map(d=>[d.storageDate].concat(d.products.map(p=>parseInt(p.productPrice*p.productQuantity)).reduce((a, b) => a + b, 0)))
   const dataObjYearSup = dataSupplyDate.map(d=>({
     date:parseInt(d[0].split("").slice(6).join("")) === currYear? d[0] : null, sales:parseInt(d[0].split("").slice(6).join("")) === currYear? d[1]: null
   }))
 
-
    const outputMsales = [];
-
    dataObjMonth.forEach(function(item) {
   var existing = outputMsales.filter(function(v, i) {
  
-    return v.date === item.date;
+    return v.date === item.date ;
   });
   if (existing.length) {
     var existingIndex = outputMsales.indexOf(existing[0]);
@@ -63,10 +51,14 @@ const Dashboard=({invoiceData,supplierData})=>{
   }
 });
 
+outputMsales.sort(function(a, b) {
+  var dateA = a.date.split("")[0]+a.date.split("")[1], dateB = b.date.split("")[0] + b.date.split("")[1];
+  return dateA - dateB;
+})
 
 
 const outputTrade = dataObjY.map(x=>({date: x.date,sales: x.sales,cost: 0}))
-.concat(dataObjYearSup.map(x=>({date: x.date.split("")[0] + x.date.split("")[1] +"/"+ curMonth, sales:0,cost: x.sales})))
+.concat(dataObjYearSup.map(x=>({date: x.date.split("")[0] + x.date.split("")[1] +"/"+ x.date.split("")[3] + x.date.split("")[4], sales:0,cost: x.sales})))
 
 const outputTradeFinal = [];
 
@@ -88,18 +80,11 @@ outputTrade.forEach(function(item) {
   }
 });
 
-
 outputTradeFinal.sort(function(a, b) {
-  var dateA = a.date.split("")[0]+a.date.split("")[1], dateB = b.date.split("")[0] + b.date.split("")[1];
+  var dateA = a.date.split("")[3]+a.date.split("")[4]+a.date.split("")[0]+a.date.split("")[1], 
+  dateB = b.date.split("")[3] + b.date.split("")[4] + b.date.split("")[0] + b.date.split("")[1]
   return dateA - dateB;
 });
-
-outputMsales.sort(function(a, b) {
-  var dateA = a.date.split("")[0]+a.date.split("")[1], dateB = b.date.split("")[0] + b.date.split("")[1];
-  return dateA - dateB;
-});
-
-/*output.length > 1? output.splice(0,1):output*/
 return(
  
     <div className="container">

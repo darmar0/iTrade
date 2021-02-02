@@ -66,7 +66,7 @@ saveCustomer=()=>{
         return(
             
             <div className="row">
-            <div className="col-7 offset-0">
+            <div className="col-7">
             <h4 className="display-5 mb-4">Customer info</h4>   
             <SearchCustomer setValuesName={this.setValues} findCustomer={this.findCustomer} addCustomer={this.addCustomer}/>  
             {this.state.status === false ? <div className="row">

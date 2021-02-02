@@ -68,6 +68,7 @@ class CProductInfo extends React.Component{
 
 
     render(){ 
+        console.log(this.state.status)
         const subtotal = this.state.productsOnInvoice.length !== 0? 
         this.state.productsOnInvoice.map((sub)=>sub.productPrice*sub.productQuantity).reduce((a,b)=>a+b): null;
         const curMonth = (new Date().getMonth()+1) <= 9? "0" +(new Date().getMonth()+1): (new Date().getMonth()+1)
@@ -85,15 +86,16 @@ return(
 
 <div className="row">
     <div className="col-12">
+    <div class="table resFont">
         <table className="table table-bordered">
             <thead className="thead-dark">
                 <tr className="d-flex">
-                    <th className="col ordinal"></th>
-                    <th className="col-3 serial">Product serial</th>
-                    <th className="col-3">Product name</th>
-                    <th className="col-2">Quantity</th>
-                    <th className="col-2">Unit price</th>
-                    <th className="col-2">Add to invoice</th>
+                    <th className="col ordinal">#</th>
+                    <th className="col-3">Product serial</th>
+                    <th className="col-3 ">Product name</th>
+                    <th className="col-2 ">Quantity</th>
+                    <th className="col-2 ">Unit price</th>
+                    <th className="col-2 action">Add to invoice</th>
                 </tr>
             </thead>
             
@@ -102,7 +104,7 @@ return(
             deletePrToInvoice={this.deletePrToInvoice} setValuesInfo={this.setValuesInfo}/>
             
         </table>
-
+        </div>
         </div>
         </div>
     </div>

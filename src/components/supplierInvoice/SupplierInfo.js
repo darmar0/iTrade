@@ -43,12 +43,13 @@ addSupplier=()=>{
 }
 setClick=()=>{
     const filteredSupplier = this.props.supplierData.filter(sup=>sup.supplier.companyName.toLowerCase() === this.state.supplierName.toLowerCase())
-    const supplier = filteredSupplier.length === 0 ? this.state.newSupplier :filteredSupplier[0]
+    const supplier = filteredSupplier.length === 0 ? this.state.newSupplier :filteredSupplier[0].supplier
       this.setState({ newSupplier: supplier, status: filteredSupplier.length === 0 ?false: true })
 
       
    }
     render(){
+       
         this.props.acceptSupplier(this.state.newSupplier)
         return(
 <div className="row">

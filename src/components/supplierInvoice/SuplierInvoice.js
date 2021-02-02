@@ -29,6 +29,11 @@ const SuplierInvoice =({insertnewProduct,insertNewSupplier,supplierData,stockDat
                       reciveSupplier={reciveSupplier} acceptSupplier={acceptSupplier}/>
                       <NewProduct insertnewProduct={insertnewProduct} stockData={stockData} supplier={supplier}
                       history={history} insertNewSupplier={insertNewSupplier}/>
+                      <div className="row mt-5 mb-5">
+            <div className="col-12 mt-5 mb-5">
+            <hr></hr>
+            </div>
+        </div>
                    </div>
                    
                  

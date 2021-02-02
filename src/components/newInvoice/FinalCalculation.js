@@ -33,7 +33,7 @@ render(){
             <div className="row border mt-2">
             <div className="col-4">
             <div className="row">
-                   <div className="col">
+                   <div className="col resFont">
                    <ul className="list-group list-group-flush">
   <li className="list-group-item"><span className="row"><span className="col-6">Invoice number: </span> 
   <span className="col-6">{this.state.invoiceNum}</span></span></li>
@@ -49,7 +49,7 @@ render(){
                </div>
             </div>
             <div className="col-4"></div>
-            <div className="col-4">
+            <div className="col-4 resFont">
             <ul className="list-group list-group-flush">
   <li className="list-group-item"><span className="row"><span className="col-4 text-right">Subtotal </span> 
   <span className="col-4  text-center">EUR</span> <span className="col-4 text-left">{Number(this.props.subtotal).toFixed(2)}</span> </span></li>
@@ -69,6 +69,11 @@ render(){
             {this.props.subtotal !== 0 && this.props.subtotal !== null?
         <button onClick={this.saveInvoice}className="btn btn-secondary mt-4 mb-4 form-control">Save</button>: null}
             </div>
+            <div className="row mt-5 mb-5">
+            <div className="col-12 ">
+            <hr></hr>
+            </div>
+        </div>
         </div>
     
         </>

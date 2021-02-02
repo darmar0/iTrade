@@ -49,39 +49,47 @@
     border-left: 6px solid #1275bf;
 }
 
+.ordinal{
+  max-width:113.3%  !important;
+  min-width:35px  !important;
+}
+
+.action{max-width:13.6% !important;}
+
 
   @media screen and (max-height: 900px) {
     .navBar {width: 15%;}
     .navBar a {font-size: 18px;}
     .container {margin-right: 4%;}
-  }
-
-  .inv-table{
-      min-width: 900px;
-  }
-
-  @media screen and (max-height: 900px) {
+    .inv-table{ min-width: 900px;}
     .inv-table {min-width: 725px;}
-    
+    .action{max-width:13.5% !important;}
+    .ordinal{
+      max-width:113.3%  !important;
+    }
+    .modalRes{
+      margin-left: 15%;
+      width: 90%;
+   
+    }
   }
   @media screen and (max-height: 800px) {
     .navBar {width: 15%;}
     .navBar a {font-size: 18px;}
     .container {max-width:80%;}
+    .resFont {font-size: 91%;}
+    .action{max-width:13.3% !important;}
+    .ordinal{
+      max-width:113.3%  !important;
+      min-width:35px  !important;
+    }
   }
-  .ordinal{
-      max-width:45px !important;
-      min-width:45px !important;
-  }
+  
   .ordinal-btn{
     max-width:90px !important;
     min-width:90px !important;
   }
 
-.serial{
-  max-width:240px !important;
-  min-width:240px !important;
-}
 
   .calculation{
     margin-left: 50px;
