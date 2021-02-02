@@ -46,7 +46,7 @@ In this section, we are selling products from stock.
 ![invoice](https://user-images.githubusercontent.com/69918077/106674831-428d3080-65b4-11eb-9e0b-702edc5082e7.jpg)
 <br/>
 <br/>
-1. Customer info : for demo purpose, you can search - Alex & co - (dummy base data), or add a new customer with all information needed. 
+1. Customer info : for demo purpose, you can search - Alex & co - (dummy base data), or add a new customer with all information needed. <br/>
 2.Product info: for demo purpose, you can search - WHIT25633 - in the serial number field (product that is alredy in stcok)
 3. By clickink "add" buttton you are putting product on invoice,which can have multiple items.
 4. The app needs to know  tax rate and the discount amount for the final calculation.
