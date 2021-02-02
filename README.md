@@ -19,9 +19,9 @@ Project is created with:
 * React-router-dom version : 5.2.0
 * Bootstrap version : 5.0
 * Recharts: 2.0.3
-<br/>
-<br/>
+
 ## Usage
+
 <br/>
 <br/>
 
@@ -37,8 +37,8 @@ In this section, we are importing, buying products from our supplier.
 3. By clickink "add" buttton you are putting product on list,which can have multiple items.
 4. At the bottom, the app needs know number of supplier invoice for archiving purpose.
 5. By clicking save, a new product is already stored in the stock section of the iTrade app.
-<br/>
-<br/>
+
+
 ### Invoice
 In this section, we are selling products from stock.
 <br/>
