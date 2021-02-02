@@ -5,8 +5,7 @@
 
 
 ## General info
-Invoicing, stock and client base suite with data visualisation for small business (no backend). 
-The app is fetching JSON file, which already has some "dummy" data for easier presentation.
+Invoicing, stock, and client base suite with data visualization for small business (no backend). The app is fetching JSON file, which already has some "dummy" data for easier presentation.
 
 Here is a link to live demo presentation: 
 
