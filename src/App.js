@@ -20,7 +20,7 @@ class App extends React.Component{
 
 
         componentDidMount() {
-            fetch("https://gist.githubusercontent.com/darmar0/d42992a1e2f93aee1adbf656126c3a1f/raw/e394b61d0f8d98b5cb0aa02c7e133ee83a9e9207/db.json")
+            fetch("https://gist.githubusercontent.com/darmar0/d42992a1e2f93aee1adbf656126c3a1f/raw/0322bb5a20e0445f98915366f2a0a746ee7369f3/db.json")
               .then(res => res.json())
               .then(
                 (data) => {
